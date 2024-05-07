@@ -10,6 +10,13 @@ from flask import Flask
 from flask import request
 from markupsafe import escape
 import re
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+name = os.getenv("NAME")
 
 app = Flask(__name__)
 
@@ -46,7 +53,7 @@ def application():
         formattedName = getFormattedName(playerName)
         link = "https://trackmania.io/api/player/{}/trophies/0".format(playerID)
         headers = {
-            'User-Agent': 'Displays specified user\'s div in COTD for a Twitch command. For questions about this project, contact me on Discord: Johnnycyan#0001',
+            'User-Agent': f'Displays specified user\'s div in COTD for a Twitch command. For questions about this project, contact me on Discord: {name}',
         }
         rank = 0
         div = 0
